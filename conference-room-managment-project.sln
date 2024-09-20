@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceRoomManagmentProject.API", "ConferenceRoomManagmentProject.API\ConferenceRoomManagmentProject.API.csproj", "{091FAC12-D1AE-4741-9687-1660ED297312}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceRoomManagmentProject.Application", "ConferenceRoomManagmentProject.Application\ConferenceRoomManagmentProject.Application.csproj", "{4BC42AFB-7956-459F-B96C-E599F600CBD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceRoomManagmentProject.Domain", "ConferenceRoomManagmentProject.Domain\ConferenceRoomManagmentProject.Domain.csproj", "{E083BBAD-26A2-47AC-BCF8-0477F831EE4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceRoomManagmentProject.Infrastructure", "ConferenceRoomManagmentProject.Infrastructure\ConferenceRoomManagmentProject.Infrastructure.csproj", "{ED3DA19D-A21F-4DAA-9E49-04A9DCB98AE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceRoomManagmentProject.Tests", "ConferenceRoomManagmentProject.Tests\ConferenceRoomManagmentProject.Tests.csproj", "{2FA90FE3-896D-45AC-A358-EC2018456744}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{091FAC12-D1AE-4741-9687-1660ED297312}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{091FAC12-D1AE-4741-9687-1660ED297312}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{091FAC12-D1AE-4741-9687-1660ED297312}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{091FAC12-D1AE-4741-9687-1660ED297312}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BC42AFB-7956-459F-B96C-E599F600CBD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BC42AFB-7956-459F-B96C-E599F600CBD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BC42AFB-7956-459F-B96C-E599F600CBD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BC42AFB-7956-459F-B96C-E599F600CBD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E083BBAD-26A2-47AC-BCF8-0477F831EE4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E083BBAD-26A2-47AC-BCF8-0477F831EE4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E083BBAD-26A2-47AC-BCF8-0477F831EE4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E083BBAD-26A2-47AC-BCF8-0477F831EE4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED3DA19D-A21F-4DAA-9E49-04A9DCB98AE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED3DA19D-A21F-4DAA-9E49-04A9DCB98AE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED3DA19D-A21F-4DAA-9E49-04A9DCB98AE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED3DA19D-A21F-4DAA-9E49-04A9DCB98AE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FA90FE3-896D-45AC-A358-EC2018456744}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FA90FE3-896D-45AC-A358-EC2018456744}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FA90FE3-896D-45AC-A358-EC2018456744}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FA90FE3-896D-45AC-A358-EC2018456744}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
