@@ -3,9 +3,9 @@ namespace ConferenceRoomManagmentProject.Domain.IRepository;
 
 public interface IRoomRepository
 {
-    Room GetRoomById(int id);
-    IEnumerable<Room> GetAvailableRooms(DateTime startTime, DateTime endTime, int capacity);
-    void AddRoom(Room room);
-    void UpdateRoom(Room room);
-    void DeleteRoom(int id);
+    Task<Room> GetRoomByIdAsync(int id);
+    Task<IEnumerable<Room>> GetAvailableRoomsAsync(DateTime startTime, DateTime endTime, int capacity);
+    Task<Room> AddRoomAsync(Room room);
+    Task UpdateRoomAsync(Room room);
+    Task DeleteRoomAsync(int id);
 }

@@ -3,8 +3,9 @@ namespace ConferenceRoomManagmentProject.Domain.IRepository;
 
 public interface IBookingRepository
 {
-    Booking GetBookingById(int id);
-    void AddBooking(Booking booking);
-    IEnumerable<Booking> GetBookingsByRoomId(int roomId);
-    void DeleteBooking(int id);
+    Task<Booking> GetBookingByIdAsync(int id);
+    Task<IEnumerable<Booking>> GetBookingsForRoomAsync(int roomId, DateTime startTime, DateTime endTime);
+    Task<Booking> AddBookingAsync(Booking booking);
+    Task UpdateBookingAsync(Booking booking);
+    Task DeleteBookingAsync(int id);
 }

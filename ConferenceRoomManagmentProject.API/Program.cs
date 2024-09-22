@@ -1,3 +1,8 @@
+using ConferenceRoomManagmentProject.Domain.IRepository;
+using ConferenceRoomManagmentProject.Infrastructure.Persistence;
+using ConferenceRoomManagmentProject.Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,7 +10,21 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Register DbContext
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Register Repositories
+builder.Services.AddScoped<IRoomRepository, RoomRepository>();
+builder.Services.AddScoped<IBookingRepository, BookingRepository>();
+builder.Services.AddScoped<IServiceRepository, ServiceRepository>();
+
+// Add other services (e.g., controllers, Swagger, etc.)
+builder.Services.AddControllers();
+
 var app = builder.Build();
+
+app.MapControllers();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
