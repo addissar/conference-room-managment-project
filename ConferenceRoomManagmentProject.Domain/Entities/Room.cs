@@ -1,10 +1,16 @@
-﻿namespace ConferenceRoomManagmentProject.Domain.Entities;
+﻿using ConferenceRoomManagmentProject.Domain.IEntities;
 
-public class Room
+namespace ConferenceRoomManagmentProject.Domain.Entities;
+
+public class Room : EntityBase, IRoom
 {
-    public int Id { get; set; }
-    public string? Name { get; set; }
+    public string Name { get; set; }
     public int? Capacity { get; set; }
     public decimal? BaseHourlyRate { get; set; }
-    public List<RoomService> AvailableServices { get; set; } = new List<RoomService>();
+    public ICollection<Service> Services { get; set; }
+    
+    public Room()
+    {
+        Services = new List<Service>();
+    }
 }

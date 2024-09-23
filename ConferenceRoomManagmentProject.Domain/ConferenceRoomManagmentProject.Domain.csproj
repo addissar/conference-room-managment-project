@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <Compile Remove="Class1.cs" />
+      <Compile Remove="Entities\Entity Base.cs" />
     </ItemGroup>
 
 </Project>

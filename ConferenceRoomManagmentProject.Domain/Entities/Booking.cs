@@ -1,12 +1,18 @@
-﻿namespace ConferenceRoomManagmentProject.Domain.Entities;
+﻿using ConferenceRoomManagmentProject.Domain.IEntities;
 
-public class Booking
+namespace ConferenceRoomManagmentProject.Domain.Entities;
+
+public class Booking : EntityBase, IBooking
 {
-    public int Id { get; set; }
-    public int RoomId { get; set; }
-    public Room? Room { get; set; }
+    public Guid  RoomId { get; set; }
+    public Room Room { get; set; }
     public DateTime StartTime { get; set; }
     public DateTime EndTime { get; set; }
-    public decimal TotalCost { get; set; }
-    public List<BookingService> SelectedServices { get; set; } = new List<BookingService>();
+    public ICollection<Service> Services { get; set; }
+    public decimal TotalPrice { get; set; }
+
+    public Booking()
+    {
+        Services = new List<Service>();
+    }
 }
