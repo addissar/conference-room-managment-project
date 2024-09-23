@@ -23,7 +23,7 @@ public class ServiceRepository : IServiceRepository
         return service;
     }
 
-    public async Task<Service> GetServiceByIdAsync(int id)
+    public async Task<Service> GetServiceByIdAsync(Guid id)
     {
         return await _context.Services.FindAsync(id) ?? throw new InvalidOperationException();
     }
@@ -39,7 +39,7 @@ public class ServiceRepository : IServiceRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task DeleteServiceAsync(int id)
+    public async Task DeleteServiceAsync(Guid id)
     {
         var service = await _context.Services.FindAsync(id);
         if (service != null)

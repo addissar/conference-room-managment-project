@@ -1,8 +1,9 @@
-﻿namespace ConferenceRoomManagmentProject.Domain.Entities;
+﻿using ConferenceRoomManagmentProject.Domain.IEntities;
 
-public class Service
+namespace ConferenceRoomManagmentProject.Domain.Entities;
+
+public class Service : EntityBase, IService
 {
-    public int Id { get; set; }
     public string? Name { get; set; }
     public decimal Price { get; set; }
 }

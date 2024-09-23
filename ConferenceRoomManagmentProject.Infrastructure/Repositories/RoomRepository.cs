@@ -37,7 +37,7 @@ public class RoomRepository : IRoomRepository
             .ToListAsync();
     }
 
-    public async Task<Room> GetRoomByIdAsync(int id)
+    public async Task<Room> GetRoomByIdAsync(Guid id)
     {
         return await _context.Rooms.FindAsync(id) ?? throw new InvalidOperationException();
     }
@@ -48,7 +48,7 @@ public class RoomRepository : IRoomRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task DeleteRoomAsync(int id)
+    public async Task DeleteRoomAsync(Guid id)
     {
         var room = await _context.Rooms.FindAsync(id);
         if (room != null)

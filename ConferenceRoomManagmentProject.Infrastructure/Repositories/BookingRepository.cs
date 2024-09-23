@@ -29,12 +29,12 @@ public class BookingRepository : IBookingRepository
         throw new NotImplementedException();
     }
 
-    public async Task<Booking> GetBookingByIdAsync(int id)
+    public async Task<Booking> GetBookingByIdAsync(Guid id)
     {
         return await _context.Bookings.FindAsync(id) ?? throw new InvalidOperationException();
     }
 
-    public async Task<IEnumerable<Booking>> GetBookingsForRoomAsync(int roomId,DateTime startTime, DateTime endTime)
+    public async Task<IEnumerable<Booking>> GetBookingsForRoomAsync(Guid roomId,DateTime startTime, DateTime endTime)
     {
         //add date
         return await _context.Bookings
@@ -42,7 +42,7 @@ public class BookingRepository : IBookingRepository
             .ToListAsync();
     }
 
-    public async Task DeleteBookingAsync(int id)
+    public async Task DeleteBookingAsync(Guid id)
     {
         var booking = await _context.Bookings.FindAsync(id);
         if (booking != null)
