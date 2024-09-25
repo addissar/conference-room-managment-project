@@ -11,4 +11,18 @@
       <ProjectReference Include="..\ConferenceRoomManagmentProject.Infrastructure\ConferenceRoomManagmentProject.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="Pricing\**" />
+      <Compile Remove="Class1.cs" />
+      <Compile Remove="DTO\RoomUptadeDTO.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Pricing\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Pricing\**" />
+    </ItemGroup>
+
 </Project>
