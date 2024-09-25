@@ -19,8 +19,4 @@
       <ProjectReference Include="..\ConferenceRoomManagmentProject.Application\ConferenceRoomManagmentProject.Application.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Controllers\" />
-    </ItemGroup>
-
 </Project>

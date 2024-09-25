@@ -15,14 +15,22 @@
       <Compile Remove="Pricing\**" />
       <Compile Remove="Class1.cs" />
       <Compile Remove="DTO\RoomUptadeDTO.cs" />
+      <Compile Remove="Common\**" />
     </ItemGroup>
 
     <ItemGroup>
       <EmbeddedResource Remove="Pricing\**" />
+      <EmbeddedResource Remove="Common\**" />
     </ItemGroup>
 
     <ItemGroup>
       <None Remove="Pricing\**" />
+      <None Remove="Common\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="System.Threading.Tasks" Version="4.3.0" />
+      <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
     </ItemGroup>
 
 </Project>

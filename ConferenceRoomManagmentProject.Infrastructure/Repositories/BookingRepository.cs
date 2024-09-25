@@ -33,13 +33,24 @@ public class BookingRepository : IBookingRepository
         return await _context.Bookings.FindAsync(id) ?? throw new InvalidOperationException();
     }
 
-    public async Task<IEnumerable<Booking>> GetBookingsForRoomAsync(Guid roomId, DateTime startTime, DateTime endTime)
+    public async Task<IEnumerable<Booking>> GetBookingsForRoomAsync(Guid roomId, DateTime date, DateTime startTime, DateTime endTime)
     {
         return await _context.Bookings
-            .Where(b => b.RoomId == roomId && b.StartTime < endTime && b.EndTime > startTime)
+            .Where(b => b.RoomId == roomId && b.StartTime < endTime && b.EndTime > startTime && b.Date == date)
             .ToListAsync();
     }
 
+    public async Task<IEnumerable<Booking>> GetAllBookingsForTimeAsync(DateTime date, DateTime startTime, DateTime endTime)
+    {
+        if (startTime >= endTime)
+        {
+            throw new ArgumentException("Start time must be earlier than end time.");
+        }
+
+        return await _context.Bookings
+            .Where(b => b.Date == date && b.StartTime < endTime && b.EndTime > startTime)
+            .ToListAsync();
+    }
 
     public async Task DeleteBookingAsync(Guid id)
     {
