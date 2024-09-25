@@ -13,4 +13,5 @@ public class Room : EntityBase, IRoom
     {
         Services = new List<Service>();
     }
+    public ICollection<Booking> Bookings { get; set; }
 }

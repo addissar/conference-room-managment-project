@@ -55,4 +55,8 @@ public class RoomRepository : IRoomRepository
             await _context.SaveChangesAsync();
         }
     }
+    public async Task<IEnumerable<Room>> GetAllRoomsAsync()
+    {
+        return await _context.Rooms.ToListAsync();
+    }
 }

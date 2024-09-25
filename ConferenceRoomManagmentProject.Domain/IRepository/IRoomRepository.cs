@@ -8,4 +8,6 @@ public interface IRoomRepository
     Task<Room> AddRoomAsync(Room room);
     Task UpdateRoomAsync(Room room);
     Task DeleteRoomAsync(Guid id);
+
+    Task<IEnumerable<Room>> GetAllRoomsAsync();
 }

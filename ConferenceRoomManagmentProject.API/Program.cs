@@ -1,3 +1,4 @@
+using ConferenceRoomManagmentProject.Application.Interfaces;
 using ConferenceRoomManagmentProject.Application.Services;
 using ConferenceRoomManagmentProject.Domain.IEntities;
 using ConferenceRoomManagmentProject.Domain.IRepository;
@@ -17,6 +18,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Register Repositories
+
 builder.Services.AddScoped<IRoomRepository, RoomRepository>();
 builder.Services.AddScoped<IBookingRepository, BookingRepository>();
 builder.Services.AddScoped<IServiceRepository, ServiceRepository>();
@@ -24,6 +26,7 @@ builder.Services.AddScoped<IServiceRepository, ServiceRepository>();
 // Add other services (e.g., controllers, Swagger, etc.)
 builder.Services.AddControllers();
 builder.Services.AddScoped<IPricingService, PricingService>();
+builder.Services.AddScoped<IRoomsService, RoomsService>();
 
 var app = builder.Build();
 
@@ -33,21 +36,21 @@ app.MapControllers();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Conference Room Booking Project V1"); });
 
-app.UseHttpsRedirection();
+    app.UseHttpsRedirection();
 
 // var summaries = new[]
 // {
 //     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 // };
-app.UseRouting();
+    app.UseRouting();
 
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers();
-});
+    app.UseEndpoints(endpoints =>
+    {
+        endpoints.MapControllers();
+    });
+
 // app.MapGet("/weatherforecast", () =>
 //     {
 //         var forecast = Enumerable.Range(1, 5).Select(index =>
@@ -63,8 +66,8 @@ app.UseEndpoints(endpoints =>
 //     .WithName("GetWeatherForecast")
 //     .WithOpenApi();
 
-app.Run();
-
+    app.Run();
+}
 // record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 // {
 //     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
