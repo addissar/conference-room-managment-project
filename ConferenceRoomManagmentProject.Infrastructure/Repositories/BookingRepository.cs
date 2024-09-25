@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ConferenceRoomManagmentProject.Domain.Entities;
 using ConferenceRoomManagmentProject.Domain.IRepository;
 using ConferenceRoomManagmentProject.Infrastructure.Persistence;
@@ -24,23 +21,25 @@ public class BookingRepository : IBookingRepository
         return booking;
     }
 
-    public Task UpdateBookingAsync(Booking booking)
+    public async Task UpdateBookingAsync(Booking booking)
     {
-        throw new NotImplementedException();
+        _context.Bookings.Update(booking);
+        await _context.SaveChangesAsync();
     }
+
 
     public async Task<Booking> GetBookingByIdAsync(Guid id)
     {
         return await _context.Bookings.FindAsync(id) ?? throw new InvalidOperationException();
     }
 
-    public async Task<IEnumerable<Booking>> GetBookingsForRoomAsync(Guid roomId,DateTime startTime, DateTime endTime)
+    public async Task<IEnumerable<Booking>> GetBookingsForRoomAsync(Guid roomId, DateTime startTime, DateTime endTime)
     {
-        //add date
         return await _context.Bookings
-            .Where(b => b.RoomId == roomId)
+            .Where(b => b.RoomId == roomId && b.StartTime < endTime && b.EndTime > startTime)
             .ToListAsync();
     }
+
 
     public async Task DeleteBookingAsync(Guid id)
     {

@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ConferenceRoomManagmentProject.Domain.Entities;
 using ConferenceRoomManagmentProject.Domain.IRepository;
 using ConferenceRoomManagmentProject.Infrastructure.Persistence;
@@ -17,10 +14,19 @@ public class RoomRepository : IRoomRepository
         _context = context;
     }
 
-    public Task<IEnumerable<Room>> GetAvailableRoomsAsync(DateTime startTime, DateTime endTime, int capacity)
+    public async Task<IEnumerable<Room>> GetAvailableRoomsAsync(DateTime startTime, DateTime endTime, int capacity)
     {
-        throw new NotImplementedException();
+        var bookedRoomIds = await _context.Bookings
+            .Where(b => b.StartTime < endTime && b.EndTime > startTime)
+            .Select(b => b.RoomId)
+            .ToListAsync();
+
+        return await _context.Rooms
+            .Where(r => r.Capacity >= capacity && !bookedRoomIds.Contains(r.Id))
+            .ToListAsync();
     }
+
+
 
     public async Task<Room> AddRoomAsync(Room room)
     {
@@ -28,15 +34,7 @@ public class RoomRepository : IRoomRepository
         await _context.SaveChangesAsync();
         return room;
     }
-
-    public async Task<IEnumerable<Room>> GetAvailableRoomsAsync(int capacity, DateTime from, DateTime to)
-    {
-        // Implement filtering logic
-        return await _context.Rooms
-            .Where(r => r.Capacity >= capacity)  // Example filtering based on capacity
-            .ToListAsync();
-    }
-
+    
     public async Task<Room> GetRoomByIdAsync(Guid id)
     {
         return await _context.Rooms.FindAsync(id) ?? throw new InvalidOperationException();

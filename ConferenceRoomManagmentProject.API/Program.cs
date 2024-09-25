@@ -1,3 +1,5 @@
+using ConferenceRoomManagmentProject.Application.Services;
+using ConferenceRoomManagmentProject.Domain.IEntities;
 using ConferenceRoomManagmentProject.Domain.IRepository;
 using ConferenceRoomManagmentProject.Infrastructure.Persistence;
 using ConferenceRoomManagmentProject.Infrastructure.Repositories;
@@ -21,6 +23,7 @@ builder.Services.AddScoped<IServiceRepository, ServiceRepository>();
 
 // Add other services (e.g., controllers, Swagger, etc.)
 builder.Services.AddControllers();
+builder.Services.AddScoped<IPricingService, PricingService>();
 
 var app = builder.Build();
 
@@ -39,7 +42,12 @@ app.UseHttpsRedirection();
 // {
 //     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 // };
-//
+app.UseRouting();
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 // app.MapGet("/weatherforecast", () =>
 //     {
 //         var forecast = Enumerable.Range(1, 5).Select(index =>
