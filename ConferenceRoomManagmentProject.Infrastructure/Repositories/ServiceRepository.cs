@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ConferenceRoomManagmentProject.Domain.Entities;
 using ConferenceRoomManagmentProject.Domain.IRepository;
 using ConferenceRoomManagmentProject.Infrastructure.Persistence;
