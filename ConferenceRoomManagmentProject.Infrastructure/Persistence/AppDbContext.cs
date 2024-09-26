@@ -35,6 +35,21 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
         modelBuilder.Entity<Service>()
             .Property(s => s.Price)
             .HasColumnType("decimal(18,2)");
+        
+        modelBuilder.Entity<Room>()
+            .HasMany(r => r.Services)
+            .WithOne(s => s.Room)
+            .HasForeignKey(s => s.RoomId)
+            .OnDelete(DeleteBehavior.Cascade); // Enables cascade delete
+
+        // Configure Room -> Booking relationship with Cascade Delete
+        modelBuilder.Entity<Room>()
+            .HasMany(r => r.Bookings)
+            .WithOne(b => b.Room)
+            .HasForeignKey(b => b.RoomId)
+            .OnDelete(DeleteBehavior.Cascade); // Enables cascade delete
+        
+        base.OnModelCreating(modelBuilder);
     }
     /*
     public DbSet<Room> Rooms { get; set; }
